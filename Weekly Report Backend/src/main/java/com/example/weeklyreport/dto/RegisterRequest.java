@@ -1,7 +1,5 @@
 package com.example.weeklyreport.dto;
 
-import com.example.weeklyreport.model.User;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -20,6 +18,4 @@ public class RegisterRequest {
 
     @NotBlank(message = "Password is required")
     private String password;
-    
-    private User.UserRole role;
 }

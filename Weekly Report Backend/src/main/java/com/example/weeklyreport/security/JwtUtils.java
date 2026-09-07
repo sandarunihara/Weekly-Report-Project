@@ -3,6 +3,7 @@ package com.example.weeklyreport.security;
 import java.security.Key;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,8 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtUtils {
     
-    private final String jwtSecret = "uykfsdoids6rtdsaclkkuhkjmdsaklafdgyfjweydncydsisagvywenvudgfds";
+    @Value("${jwt.secret}")
+    private String jwtSecret;
     private final int jwtExpirationMs = 86400000; // 24 
 
     private Key getSigningKey() {

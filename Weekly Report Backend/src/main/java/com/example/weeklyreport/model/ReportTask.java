@@ -3,6 +3,8 @@ package com.example.weeklyreport.model;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +23,7 @@ public class ReportTask {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report_version_id", nullable = false)
+    @JsonIgnore
     private ReportVersion reportVersion;
 
     @Column(name = "task_name", nullable = false)

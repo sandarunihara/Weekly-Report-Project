@@ -34,7 +34,7 @@ public class AuthService {
                 .fullName(registerRequest.getFullName())
                 .email(registerRequest.getEmail())
                 .password(encoder.encode(registerRequest.getPassword()))
-                .role(registerRequest.getRole() != null ? registerRequest.getRole() : User.UserRole.TEAM_MEMBER)
+                .role(User.UserRole.TEAM_MEMBER)
                 .isActive(true)
                 .build();
 
@@ -42,14 +42,18 @@ public class AuthService {
     }
 
     public JwtResponse authenticateUser(LoginRequest loginRequest) {
+        User user = userRepository.findByEmail(loginRequest.getEmail())
+                .orElseThrow(() -> new RuntimeException("Invalid email or password."));
+
+        if (!user.isActive()) {
+            throw new RuntimeException("This account is inactive.");
+        }
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
-
-        User user = userRepository.findByEmail(loginRequest.getEmail())
-                .orElseThrow(() -> new RuntimeException("Error: User not found."));
 
         return new JwtResponse(jwt, user.getId(), user.getFullName(), user.getEmail(), user.getRole().name());
     }

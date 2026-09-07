@@ -1,6 +1,7 @@
 package com.example.weeklyreport.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ public class ReportBlocker {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report_version_id", nullable = false)
+    @JsonIgnore
     private ReportVersion reportVersion;
 
     @Column(nullable = false, columnDefinition = "TEXT")

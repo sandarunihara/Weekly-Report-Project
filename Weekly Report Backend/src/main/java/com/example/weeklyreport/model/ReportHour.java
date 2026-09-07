@@ -1,6 +1,7 @@
 package com.example.weeklyreport.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class ReportHour {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report_version_id", nullable = false)
+    @JsonIgnore
     private ReportVersion reportVersion;
 
     @Column(name = "task_type", nullable = false)

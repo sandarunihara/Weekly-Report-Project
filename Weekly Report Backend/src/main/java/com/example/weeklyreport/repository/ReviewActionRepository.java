@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 import com.example.weeklyreport.model.ReviewAction;
 
 @Repository
-public interface ReviewActionRepository extends JpaRepository<ReviewAction, UUID>{
-    
+public interface ReviewActionRepository extends JpaRepository<ReviewAction, UUID> {
+
     List<ReviewAction> findByReportIdOrderByCreatedAtDesc(UUID reportId);
+
+    List<ReviewAction> findAllByOrderByCreatedAtDesc();
 }

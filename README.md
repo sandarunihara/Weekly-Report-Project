@@ -1,6 +1,6 @@
-# WeeklyPulse
+# Weekly-Report-Project
 
-WeeklyPulse is a full-stack weekly report and team dashboard application.
+Weekly-Report-Project is a full-stack weekly report and team dashboard application.
 Team members create structured reports, submit them for review, respond to correction requests, and track report history. Managers review reports, monitor compliance, and analyze team workload.
 
 ## Stack
@@ -124,10 +124,3 @@ The test suite includes application startup, report ownership, review-state auth
 - Draft report content is private to its owner.
 - Never commit `.env` files, database passwords, or AI provider keys.
 
-## Submission artifacts
-
-- ER diagram: `database_er_diagram.svg` and `database_er_diagram.md`
-- Presentation content: `PRESENTATION_OUTLINE.md`
-- Demo walkthrough: `DEMO_SCRIPT.md`
-
-The presentation and demo video must be uploaded to the required shared Google Drive folder before submission.
